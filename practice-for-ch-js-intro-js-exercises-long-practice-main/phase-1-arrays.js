@@ -43,22 +43,57 @@ Array.prototype.transpose = function() {
     // }
     // return newArr
 
-    let newArr = [[],[],[]]
+    
     // i = 0
     // while (i < this.length) {
     //     newArr.push([])
     //     i += 1
     // }
-    
-    for (let i = 0; i < 3; i++) {
-        for (let j = 0; j < 3; j++ ) {
-            newArr.push([j][i])
+
+    let newArr = []
+    for ( i = 0; i < this.length; i++) {
+        let row = [];
+        for ( j = 0; j < this.length; j++ ) {
+            row.push(this[j][i])
         }
+        newArr.push(row)
     }
     return newArr
 }
 
-console.log([[0, 1, 2], [3, 4, 5], [6, 7, 8]].transpose()) // => [[0,3,6], [1,4,7], [2,5,8]]
+// console.log([[0, 1, 2], [3, 4, 5], [6, 7, 8]].transpose()) // => [[0,3,6], [1,4,7], [2,5,8]]
+function doubler(num){
+    return num * 2;
+}
+
+Array.prototype.myEach = function(callback) {
+    
+    for (let i = 0; i < this.length; i++){
+        callback(this[i])
+    }
+
+}
+
+    Array.prototype.myMap = function(callback){
+        let newArr = [];
+        for (let i = 0; i < this.length; i++){
+            newArr.push(callback(this[i]));
+        }
+        return newArr;
+    }
+
+
+
+
+
+// console.log([1, 2, 3, 4, 5].myEach(callback));
+console.log([1, 2, 3, 4, 5].myMap(doubler));
+
+
+
+
+
+
 
 
 
